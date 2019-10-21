@@ -3,32 +3,29 @@ import { Layout, Button, Toggle, Text } from 'react-native-ui-kitten';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { connect } from "react-redux";
 import { IAppState } from '@states/reducer';
-import { updateLocale, updateTheme } from '@states/actions/settings';
+import { themeChange, localeChange } from '@states/actions/settings';
 import { InjectedIntl, injectIntl } from 'react-intl';
 import { ISettingsState } from '@states/reducers/settings';
 import { light, dark } from '@eva-design/eva';
-import { updateAuth } from '@states/actions/auth';
-import {
-    NavigationParams,
-    NavigationScreenProp,
-    NavigationState,
-} from 'react-navigation';
+import { logout } from '@states/actions/auth';
 
-interface IProps {
+import { bindActionCreators } from 'redux';
+import NavigationService from '@services/navigation';
+
+interface Props {
     intl: InjectedIntl
     settings: ISettingsState;
-    onLocaleChange(local: string): any;
-    onThemeChange(theme: any): any;
-    onLogout(): any;
-    navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+    localeChange(local: string): any;
+    themeChange(theme: any): any;
+    logout(): any;
 }
 
-interface IState {
+interface State {
     checkedTheme: boolean
     checkedLocale: boolean
 }
 
-class Settings extends Component<IProps, IState> {
+class Settings extends Component<Props, State> {
     state = {
         checkedTheme: false,
         checkedLocale: this.props.settings.locale === "fr" ? true : false,
@@ -36,16 +33,16 @@ class Settings extends Component<IProps, IState> {
 
 
     logoutUser = () => {
-        this.props.onLogout()
-        this.props.navigation.navigate('Login')
+        this.props.logout()
+        NavigationService.navigate('Login')
     }
 
     onThemeChange = () => {
         this.setState({ checkedTheme: !this.state.checkedTheme }, () => {
             if (this.state.checkedTheme) {
-                this.props.onThemeChange(light)
+                this.props.themeChange(light)
             } else {
-                this.props.onThemeChange(dark)
+                this.props.themeChange(dark)
             }
         })
     }
@@ -53,9 +50,9 @@ class Settings extends Component<IProps, IState> {
     onLocaleChange = () => {
         this.setState({ checkedLocale: !this.state.checkedLocale }, () => {
             if (this.state.checkedLocale) {
-                this.props.onLocaleChange('fr');
+                this.props.localeChange('fr');
             } else {
-                this.props.onLocaleChange('en');
+                this.props.localeChange('en');
             }
         })
     }
@@ -104,13 +101,11 @@ const mapStateToProps = (state: IAppState) => ({
     settings: state.settings,
 });
 
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        onLocaleChange: updateLocale({ dispatch }),
-        onThemeChange: updateTheme({ dispatch }),
-        onLogout: updateAuth({ dispatch }),
-    };
-};
+const mapDispatchToProps = {
+    logout,
+    themeChange,
+    localeChange,
+}
 
 export default connect(
     mapStateToProps,

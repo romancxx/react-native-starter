@@ -1,34 +1,35 @@
-import { LOGIN, LOGOUT, LOGIN_SUCCESS } from "@states/reducers/auth";
-import { store } from "@states/store";
+export const LOGIN = "LOGIN";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
 
-export function login(username: string, password: string) {
-  setTimeout(() => {
-    store.dispatch({ type: LOGIN_SUCCESS });
-  }, 2000);
+export const LOGOUT = "LOGOUT";
 
+export function login(username:string, password:string): any {
   return {
-    type: LOGIN
-    // payload: {
-    //   request: {
-    //     method: "POST",
-    //     url: "/api/login",
-    //     data: {
-    //       username: username,
-    //       password: password
-    //     }
-    //   }
-    // }
+    type: LOGIN,
+    payload: {
+      username,
+      password
+    },
   };
 }
 
+export function loginSuccess(): any {
+  return {
+    type: LOGIN_SUCCESS,
+    payload: {},
+  };
+}
+
+export function loginFail(error: any): any {
+  return {
+    error,
+    type: LOGIN_FAIL,
+  };
+}
 
 export function logout(): any {
   return {
-    type: LOGOUT
+    type: LOGOUT,
   };
 }
-
-
-  export const updateAuth = ({ dispatch }: any) => {
-    return () => dispatch(logout());
-  };

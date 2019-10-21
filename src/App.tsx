@@ -12,6 +12,7 @@ import { IAppState } from '@states/reducer';
 import { Provider, connect } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "@states/store";
+import NavigationService from '@services/navigation';
 
 import { EvaIconsPack } from '@ui-kitten/eva-icons'; // <-- Make sure it is installed. npm i @ui-kitten/eva-icons
 

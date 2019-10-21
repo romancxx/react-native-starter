@@ -5,18 +5,18 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
-interface IState {
+interface State {
     isLoading: boolean;
 }
 
-interface IProps {
+interface Props {
     onPress(): any;
     text: string;
     loading?: boolean;
     style?: any;
 }
 
-export default class SpinnerButton extends Component<IProps, IState> {
+export default class SpinnerButton extends Component<Props, State> {
     render() {
         const { loading = false, onPress, style, text } = this.props
         return (

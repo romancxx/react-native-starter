@@ -7,10 +7,11 @@ const plugins = [
         "@screens": "./src/screens",
         "@locales": "./src/locales",
         "@components": "./src/components",
-        // "@assets": "./src/assets",
+        "@assets": "./src/assets",
         "@navigation": "./src/navigation",
-        // "@services": "./src/services",
+        "@api": "./src/api",
         "@states": "./src/states",
+        "@services": "./src/services",
       }
     }
   ]

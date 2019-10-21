@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Login from '@screens/Login';
-import Home from '@screens/BottomTab/Home';
-import { BottomTabContainer } from "@components/BottomTabNav/BottomTabContainer";
-import Settings from "@screens/BottomTab/Settings";
+import Login from '@screens/Login/Login';
+import Home from '@screens/BottomTab/Home/Home';
+import { BottomTabContainer } from "@screens/BottomTab/components/BottomTabContainer";
+import Settings from "@screens/BottomTab/Settings/Settings";
 
 const MenuNavigaton = createBottomTabNavigator(
     {

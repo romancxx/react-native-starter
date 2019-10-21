@@ -1,9 +1,9 @@
 import { locales, en } from "@locales/index";
 import { AsyncStorage } from "react-native";
 import { dark } from '@eva-design/eva';
+import { LOCALE_CHANGE, THEME_CHANGE } from "@states/actions/settings";
 
-export const LOCALE_CHANGE = "LOCALE_CHANGE";
-export const THEME_CHANGE = "THEME_CHANGE";
+
 
 export interface ISettingsState {
   locale: string;

@@ -12,27 +12,31 @@ import { login } from "@states/actions/auth";
 import { connect } from "react-redux";
 import { IAuthState } from '@states/reducers/auth';
 import SpinnerButton from '@components/SpinnerButton';
+import NavigationService from '@services/navigation';
 
-interface IProps {
+interface Props {
     auth: IAuthState
     intl: InjectedIntl
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
     login(username: string, password: string): any;
 }
 
-interface IState { }
+interface State { }
 
-class Login extends Component<IProps, IState> {
+class Login extends Component<Props, State> {
 
     componentDidMount() {
         if (this.props.auth.isAuth) {
-            this.props.navigation.navigate('Main')
+            NavigationService.setRefNavigator(this.props.navigation)
+            NavigationService.navigate('Main')
+            // this.props.navigation.navigate('Main')
         }
     }
 
     componentDidUpdate() {
         if (this.props.auth.isAuth) {
-            this.props.navigation.navigate('Main')
+            NavigationService.navigate('Main')
+            // this.props.navigation.navigate('Main')
         }
     }
 
