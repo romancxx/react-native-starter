@@ -4,7 +4,8 @@
 ## :star: Features
 
 - Redux
-- Axios & Axios Middleware
+- Axios
+- Saga
 - UI Kitten
 - React Intl 
 
