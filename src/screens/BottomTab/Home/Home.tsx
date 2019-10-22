@@ -2,11 +2,6 @@ import React, { Component } from 'react'
 import { Layout, Text, Button } from 'react-native-ui-kitten';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { injectIntl, InjectedIntl } from 'react-intl';
-import {
-    NavigationParams,
-    NavigationScreenProp,
-    NavigationState,
-} from 'react-navigation';
 import Header from '@components/Header';
 import { ArrowIosBackFill } from '@assets/icons';
 import NavigationService from '@services/navigation';
@@ -20,7 +15,10 @@ class Home extends Component<Props> {
     onBack = () => {
         // NavigationService.goBack();
     };
-
+    componentDidMount() {
+        console.log("object")
+    }
+ 
     render() {
         const { intl } = this.props;
         return (

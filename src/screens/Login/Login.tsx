@@ -27,16 +27,14 @@ class Login extends Component<Props, State> {
 
     componentDidMount() {
         if (this.props.auth.isAuth) {
-            NavigationService.setRefNavigator(this.props.navigation)
-            NavigationService.navigate('Main')
-            // this.props.navigation.navigate('Main')
+            NavigationService.navigate('App')
+
         }
     }
 
     componentDidUpdate() {
         if (this.props.auth.isAuth) {
-            NavigationService.navigate('Main')
-            // this.props.navigation.navigate('Main')
+            NavigationService.navigate('App')
         }
     }
 

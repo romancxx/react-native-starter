@@ -7,6 +7,7 @@ import Login from '@screens/Login/Login';
 import Home from '@screens/BottomTab/Home/Home';
 import { BottomTabContainer } from "@screens/BottomTab/components/BottomTabContainer";
 import Settings from "@screens/BottomTab/Settings/Settings";
+import AuthLoading from '@screens/AuthLoading/AuthLoading';
 
 const MenuNavigaton = createBottomTabNavigator(
     {
@@ -18,7 +19,7 @@ const MenuNavigaton = createBottomTabNavigator(
 );
 
 
- 
+
 const AppStack: NavigationContainer = createStackNavigator(
     {
 
@@ -41,12 +42,12 @@ const AuthStack: NavigationContainer = createStackNavigator(
 
 const AppNavigator = createSwitchNavigator(
     {
-        //   AuthLoading: AuthLoadingScreen,
+        AuthLoading: AuthLoading,
         App: AppStack,
         Auth: AuthStack,
     },
     {
-        initialRouteName: 'Auth',
+        initialRouteName: 'AuthLoading',
     })
 
 
