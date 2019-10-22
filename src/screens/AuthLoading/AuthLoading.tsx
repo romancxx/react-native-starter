@@ -20,7 +20,8 @@ interface Props {
 class AuthLoading extends React.Component<Props> {
     componentDidMount() {
         const { auth, navigation } = this.props;
-        NavigationService.setRefNavigator(navigation)
+        NavigationService.setRefNavigator(navigation);
+
         if (auth.isAuth) {
             NavigationService.navigate('App')
         } else {

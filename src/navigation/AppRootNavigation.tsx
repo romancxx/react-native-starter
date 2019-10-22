@@ -54,5 +54,4 @@ const AppNavigator = createSwitchNavigator(
 const AppContainer: NavigationContainer = createAppContainer(AppNavigator);
 
 
-
 export default AppContainer;
